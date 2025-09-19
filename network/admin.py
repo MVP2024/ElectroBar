@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import reverse
 from django.utils.html import format_html
-
+from django.utils.translation import gettext_lazy as _
 from .models import NetworkNode
 
 
@@ -21,7 +21,7 @@ class NetworkNodeAdmin(admin.ModelAdmin):
         url = reverse("admin:network_networknode_change", args=(obj.supplier.pk,))
         return format_html('<a href="{}">{}</a>', url, obj.supplier)
 
-    supplier_link.short_description = "Поставщик"
+    supplier_link.short_description = _("Поставщик")
     supplier_link.admin_order_field = "supplier"
 
     def clear_debt_action(self, request, queryset):

@@ -3,7 +3,7 @@ from rest_framework import serializers
 from contacts.models import ContactInfo
 from partners.models import Partner
 from products.models import Product
-
+from django.utils.translation import gettext_lazy as _
 from .models import NetworkNode
 
 
@@ -32,11 +32,13 @@ class ProductSerializer(serializers.ModelSerializer):
 
 class NetworkNodeSerializer(serializers.ModelSerializer):
     """Сериализатор для NetworkNode. Запрещаем изменение поля debt через API (read_only)."""
-
+    name = serializers.CharField(label=_("Название"))
     contact = ContactInfoSerializer()
     products = ProductSerializer(many=True, read_only=True)
-    partner = serializers.PrimaryKeyRelatedField(queryset=Partner.objects.all(), allow_null=True, required=False)
-    level = serializers.IntegerField(read_only=True)
+    partner = serializers.PrimaryKeyRelatedField(
+        queryset=Partner.objects.all(), allow_null=True, required=False
+    )
+    level = serializers.IntegerField(read_only=True, label=_("Уровень"))
 
     class Meta:
         model = NetworkNode

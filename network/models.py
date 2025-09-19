@@ -7,7 +7,9 @@ class NetworkNode(models.Model):
     """Модель звена в иерархии сети."""
 
     name = models.CharField(max_length=200, verbose_name="Название")
-    contact = models.OneToOneField(ContactInfo, on_delete=models.CASCADE, verbose_name="Контакты")
+    contact = models.OneToOneField(
+        ContactInfo, on_delete=models.CASCADE, verbose_name="Контакты"
+    )
     supplier = models.ForeignKey(
         "self",
         on_delete=models.SET_NULL,
@@ -16,7 +18,9 @@ class NetworkNode(models.Model):
         related_name="clients",
         verbose_name="Поставщик",
     )
-    debt = models.DecimalField(max_digits=12, decimal_places=2, default=0, verbose_name="Задолженность")
+    debt = models.DecimalField(
+        max_digits=12, decimal_places=2, default=0, verbose_name="Задолженность"
+    )
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Время создания")
 
     class Meta:
