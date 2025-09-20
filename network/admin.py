@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import reverse
 from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
+
 from .models import NetworkNode
 
 
@@ -13,6 +14,7 @@ class NetworkNodeAdmin(admin.ModelAdmin):
     list_filter = ("contact__city",)
     search_fields = ("name", "contact__city")
     actions = ("clear_debt_action",)
+    raw_id_fields = ("supplier", "contact")
 
     def supplier_link(self, obj):
         """Возвращает HTML-ссылку на страницу поставщика в админке или прочерк, если поставщика нет."""
@@ -29,4 +31,4 @@ class NetworkNodeAdmin(admin.ModelAdmin):
         updated = queryset.update(debt=0)
         self.message_user(request, f"Задолженность обнулена у {updated} объектов")
 
-    clear_debt_action.short_description = "Обнулить задолженность у выбранных"
+    clear_debt_action.short_description = _("Обнулить задолженность у выбранных")
