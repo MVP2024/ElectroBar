@@ -25,11 +25,12 @@ INSTALLED_APPS = [
     "network",
     "contacts",
     "products",
-    "partners",
     "users",
     "rest_framework",
     "django_filters",
 ]
+
+
 
 AUTH_USER_MODEL = "users.CustomUser"
 
