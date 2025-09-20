@@ -10,25 +10,23 @@ class CustomUser(AbstractUser):
         ("employee", _("Сотрудник")),
         ("customer", _("Клиент")),
         ("manager", _("Менеджер")),
+        ("admin", _("Админ")),
         ("other", _("Другое")),
     ]
 
-    role = models.CharField(max_length=30, choices=ROLE_CHOICES, default="customer",
-                            verbose_name=_("Роль пользователя"),
-                            help_text=_("Выберите роль пользователя: влияет на доступы в системе."))
-    is_employee = models.BooleanField(default=False, verbose_name=_("Сотрудник"),
-                                      help_text=_("Отмечается для сотрудников компании (дополнительные права)."))
-
-    # Используем строковые ссылки, чтобы избежать циклических импортов
-    partner = models.ForeignKey(
-        "partners.Partner",
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name="users",
-        verbose_name=_("Партнёр"),
-        help_text=_("Связать пользователя с партнёром (если применимо).")
+    role = models.CharField(
+        max_length=30,
+        choices=ROLE_CHOICES,
+        default="customer",
+        verbose_name=_("Роль пользователя"),
+        help_text=_("Выберите роль пользователя: влияет на доступы в системе."),
     )
+    is_employee = models.BooleanField(
+        default=False,
+        verbose_name=_("Сотрудник"),
+        help_text=_("Отмечается для сотрудников компании (дополнительные права)."),
+    )
+
     network_node = models.ForeignKey(
         "network.NetworkNode",
         null=True,
@@ -39,8 +37,8 @@ class CustomUser(AbstractUser):
     )
 
     class Meta:
-        verbose_name = "Пользователь"
-        verbose_name_plural = "Пользователи"
+        verbose_name = _("Пользователь")
+        verbose_name_plural = _("Пользователи")
 
     def __str__(self):
         return self.get_username()
