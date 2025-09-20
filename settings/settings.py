@@ -31,7 +31,6 @@ INSTALLED_APPS = [
 ]
 
 
-
 AUTH_USER_MODEL = "users.CustomUser"
 
 # REST framework настройки

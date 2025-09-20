@@ -67,20 +67,30 @@ class NetworkNode(models.Model):
     def clean(self):
         """Валидация: предотвращаем циклы и ограничиваем глубину до MAX_LEVEL."""
         # supplier не может быть самим объектом
-        if self.pk is not None and self.supplier is not None and self.supplier.pk == self.pk:
+        if (
+            self.pk is not None
+            and self.supplier is not None
+            and self.supplier.pk == self.pk
+        ):
             raise ValidationError({"supplier": "Поставщиком не может быть сам объект."})
 
         # проверка циклов: подняться по цепочке поставщиков и убедиться, что текущий объект не встречается
         node = self.supplier
         while node is not None:
             if node.pk == self.pk:
-                raise ValidationError({"supplier": "Назначение этого поставщика создаёт цикл в иерархии."})
+                raise ValidationError(
+                    {"supplier": "Назначение этого поставщика создаёт цикл в иерархии."}
+                )
             node = node.supplier
 
         # проверка глубины: уровень = supplier.level + 1
         if self.supplier is not None:
             if self.supplier.level + 1 > self.MAX_LEVEL:
-                raise ValidationError({"supplier": f"Максимальный допустимый уровень — {self.MAX_LEVEL} (0..{self.MAX_LEVEL})."})
+                raise ValidationError(
+                    {
+                        "supplier": f"Максимальный допустимый уровень — {self.MAX_LEVEL} (0..{self.MAX_LEVEL})."
+                    }
+                )
 
     def save(self, *args, **kwargs):
         # Вызываем full_clean, чтобы применить модельную валидацию при сохранении из кода/админки

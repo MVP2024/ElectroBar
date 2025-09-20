@@ -1,6 +1,6 @@
-from django.utils.translation import gettext_lazy as _
 from django.core.exceptions import ValidationError as DjangoValidationError
 from django.db import transaction
+from django.utils.translation import gettext_lazy as _
 from rest_framework import serializers
 
 from contacts.models import ContactInfo
@@ -96,7 +96,9 @@ class NetworkNodeSerializer(serializers.ModelSerializer):
                 contact = ContactInfo.objects.create(**contact_data)
                 if supplier is not None:
                     # Делаем перезапрос поставщика с блокировкой строки в БД
-                    supplier = NetworkNode.objects.select_for_update().get(pk=supplier.pk)
+                    supplier = NetworkNode.objects.select_for_update().get(
+                        pk=supplier.pk
+                    )
                     # Обновляем validated_data, чтобы в создаваемом объекте использовался заблокированный экземпляр
                     validated_data["supplier"] = supplier
                 node = NetworkNode(contact=contact, **validated_data)
@@ -124,7 +126,9 @@ class NetworkNodeSerializer(serializers.ModelSerializer):
 
                 supplier = validated_data.get("supplier")
                 if supplier is not None:
-                    supplier = NetworkNode.objects.select_for_update().get(pk=supplier.pk)
+                    supplier = NetworkNode.objects.select_for_update().get(
+                        pk=supplier.pk
+                    )
                     validated_data["supplier"] = supplier
 
                 # Обновляем остальные полей на instance и сохраняем с созданием модели

@@ -45,9 +45,9 @@ class CustomUserAdmin(UserAdmin):
     list_filter = ("role", "is_staff", "is_superuser", "is_active")
 
     fieldsets = (
-        (None, {"fields": ("username", "password")} ),
-        (_("Личные данные"), {"fields": ("first_name", "last_name", "email")} ),
-        (_("Бизнес"), {"fields": ("role", "is_employee", "network_node")} ),
+        (None, {"fields": ("username", "password")}),
+        (_("Личные данные"), {"fields": ("first_name", "last_name", "email")}),
+        (_("Бизнес"), {"fields": ("role", "is_employee", "network_node")}),
         (
             _("Разрешения"),
             {
@@ -64,10 +64,13 @@ class CustomUserAdmin(UserAdmin):
     )
 
     add_fieldsets = (
-        (None, {
-            'classes': ('wide',),
-            'fields': ('username', 'email', 'password1', 'password2'),
-        }),
+        (
+            None,
+            {
+                "classes": ("wide",),
+                "fields": ("username", "email", "password1", "password2"),
+            },
+        ),
     )
 
     readonly_fields = ("last_login", "date_joined")
