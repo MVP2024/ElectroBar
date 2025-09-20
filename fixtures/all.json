@@ -1,0 +1,187 @@
+[
+{
+  "model": "contacts.contactinfo",
+  "pk": 1,
+  "fields": {
+    "email": "skynet_lab@lad.ru",
+    "country": "Россия",
+    "city": "Брянск",
+    "street": "Урицкого",
+    "building_number": "13",
+    "structure": "2",
+    "block": "Ф"
+  }
+},
+{
+  "model": "contacts.contactinfo",
+  "pk": 2,
+  "fields": {
+    "email": "kiber_magazin@lab.ru",
+    "country": "Россия",
+    "city": "Нефтекамск",
+    "street": "Автозаводская",
+    "building_number": "8",
+    "structure": "",
+    "block": ""
+  }
+},
+{
+  "model": "contacts.contactinfo",
+  "pk": 3,
+  "fields": {
+    "email": "kidalovo@lab.ru",
+    "country": "Россия",
+    "city": "Москва",
+    "street": "Рябиновая",
+    "building_number": "45",
+    "structure": "7",
+    "block": ""
+  }
+},
+{
+  "model": "contacts.contactinfo",
+  "pk": 4,
+  "fields": {
+    "email": "perecup@lab.ru",
+    "country": "Казахстан",
+    "city": "Караганда",
+    "street": "Вялая",
+    "building_number": "123",
+    "structure": "",
+    "block": "Ы"
+  }
+},
+{
+  "model": "network.networknode",
+  "pk": 1,
+  "fields": {
+    "name": "ИП-Карина",
+    "contact": 3,
+    "supplier": 3,
+    "debt": "0.00",
+    "created_at": "2025-09-20T16:04:10.207Z"
+  }
+},
+{
+  "model": "network.networknode",
+  "pk": 2,
+  "fields": {
+    "name": "Завод Робототехники",
+    "contact": 1,
+    "supplier": null,
+    "debt": "0.00",
+    "created_at": "2025-09-20T16:05:22.945Z"
+  }
+},
+{
+  "model": "network.networknode",
+  "pk": 3,
+  "fields": {
+    "name": "Магазин Робототехники",
+    "contact": 2,
+    "supplier": 2,
+    "debt": "0.00",
+    "created_at": "2025-09-20T16:05:55.810Z"
+  }
+},
+{
+  "model": "users.customuser",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$hHIHWyWU8lTM0oAgMHdakW$Q1JG/OyscmHy9P78uUJ3MWad+Azv00pry4s860hL1UY=",
+    "last_login": "2025-09-20T15:55:38.182Z",
+    "is_superuser": true,
+    "username": "Админ",
+    "first_name": "",
+    "last_name": "",
+    "email": "admin@admin.ru",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-09-20T15:25:38.420Z",
+    "role": "admin",
+    "is_employee": true,
+    "network_node": null,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.customuser",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$ByG9ztLD1ZgSCEtR2yFm8H$w0yAvMF6Y1HLZZj+5+zdStLUeEpiWMNCw1xOCFqC4kA=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "ИП-Карина",
+    "first_name": "Карина",
+    "last_name": "Тарелочница",
+    "email": "kidalovo@lab.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-09-20T16:03:07.142Z",
+    "role": "customer",
+    "is_employee": false,
+    "network_node": 1,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.customuser",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$wDgvYgBdQAgPhyO2W0Dj7t$UJn1TmmKS4H2novs/ZtUzPHN0R4JJzpc6wGir6LlKNU=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "ИИ",
+    "first_name": "Джон",
+    "last_name": "Коннор",
+    "email": "skynet_lab_ii@lad.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-09-20T16:07:22.079Z",
+    "role": "customer",
+    "is_employee": false,
+    "network_node": 2,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.customuser",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$fiicFbtFWfYgVESuCWM66q$I3EP+qwh8ujAleIyQoIxLJLB7Br9fcIdlWSbhaF2dFg=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "Менеджер-Со",
+    "first_name": "Елена",
+    "last_name": "Прекрасная",
+    "email": "posrednic_co@lab.ru",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-09-20T16:10:42.181Z",
+    "role": "manager",
+    "is_employee": true,
+    "network_node": null,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.customuser",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$V1n9SUC9yN295yL01my04r$Tk7iHQ+K8oVHoznOVLSYW7CBFSMv6YCZsojJGtTee5o=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "Помощник-Со",
+    "first_name": "Артём",
+    "last_name": "Мальцев",
+    "email": "worker-co@lab.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-09-20T16:12:55.683Z",
+    "role": "employee",
+    "is_employee": true,
+    "network_node": null,
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]
